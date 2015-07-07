@@ -1,0 +1,54 @@
+{
+  "name": "@economist/connect-react-router-middleware",
+  "version": "1.0.0",
+  "description": "A Connect middleware for plugging in React-Router routes",
+  "author": "The Economist (http://economist.com)",
+  "license": "LicenseRef-LICENSE",
+  "repository": "git://github.com/economist/connect-react-router-middleware",
+  "homepage": "https://github.com/economist/connect-react-router-middleware",
+  "bugs": "https://github.com/economist/connect-react-router-middleware/issues",
+  "main": "index.js",
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "stage": 0
+        }
+      ]
+    ]
+  },
+  "config": {
+    "lint_opts": "--ignore-path .gitignore",
+    "mocha_opts": "-r @economist/component-testharness",
+    "coverage_opts": "--statements 95 --branches 95 --lines 95 --functions 95"
+  },
+  "eslintConfig": {
+    "extends": "strict/es5"
+  },
+  "scripts": {
+    "lint": "eslint $npm_package_config_lint_opts .",
+    "test": "npm run test:cover -- -R tap && npm run test:checkcoverage",
+    "test:cover": "istanbul cover _mocha -- $npm_package_config_mocha_opts",
+    "test:watch": "mocha $npm_package_config_mocha_opts -wR min",
+    "test:checkcoverage": "istanbul check-coverage $npm_package_config_coverage_opts"
+  },
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "debug": "^2.2.0"
+  },
+  "devDependencies": {
+    "@economist/component-testharness": "^1.1.0",
+    "eslint": "^0.24.0",
+    "eslint-config-strict": "^2.4.0",
+    "eslint-plugin-filenames": "^0.1.1",
+    "eslint-plugin-one-variable-per-var": "^0.0.3",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "pre-commit": "^1.0.10"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
